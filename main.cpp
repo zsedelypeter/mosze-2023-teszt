@@ -4,23 +4,24 @@ constexpr int N_ELEMENTS = 100;
 
 int main()
 {
-    int *b = new int[NELEMENTS]; // el van írva a constexpr neve
-    std::cout << '1-100 ertekek duplazasa' // sor végén nincs pontosvessző, ' helyett "-t kell használni
-    for (int i = 0;) //a for cilusnak meg kell adni azt is, hogy mikor legyen vége, és hogy mit csináljon az i-vel egy ciklus után
+    int *b = new int[N_ELEMENTS];
+    std::cout << "1-100 ertekek duplazasa";
+    for (int i = 0; i<N_ELEMENTS; i++) 
     {
         b[i] = i * 2; 
     }
-    for (int i = 0; i; i++) // a for ciklus második része csak 'i'
+    for (int i = 0; i<N_ELEMENTS; i++)
     {
-        std::cout << "Ertek:" //nincs sorvégi pontosvessző
+        std::cout << "Ertek:";
     }    
     std::cout << "Atlag szamitasa: " << std::endl;
-    int atlag; 
-    for (int i = 0; i < N_ELEMENTS, i++) //a for ciklusban a kezdő dolgok közé ; kell, nem pedig ,
+    int atlag = 0; 
+    for (int i = 0; i < N_ELEMENTS; i++)
     {
-        atlag += b[i] //Nincs pontosvessző, és mivel nincs feljebb érték adva az atlagnak, nem tudjuk semmihez adni a b[i] értékét
+        atlag += b[i];
     }
     atlag /= N_ELEMENTS;
     std::cout << "Atlag: " << atlag << std::endl;
-    return 0; //nem töröljük a *b mutatót
+    delete[] b;
+    return 0;
 }
